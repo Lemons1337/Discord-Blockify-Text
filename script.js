@@ -2,7 +2,7 @@ function blockify(str) {
     var prefix = ':regional_indicator_';
     var suffix = ': ';
 
-    str = str.toLowerCase();
+    str = str.toLowerCase().replace(/\s/g, a => a.repeat(4));
 
     return str.replace(/[a-z]/gi, char => {
         return prefix.concat(char, suffix);
