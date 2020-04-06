@@ -1,12 +1,16 @@
 function blockify(str) {
+    var numbers = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine'];
+  
     var prefix = ':regional_indicator_';
     var suffix = ': ';
 
     str = str.toLowerCase().replace(/\s/g, a => a.repeat(4));
+  
+    str = str.replace(/[a-z]/gi, char => prefix.concat(char, suffix));
+                      
+    str = str.replace(/[0-9]/gi, num => ':'.concat(numbers[num], suffix));
 
-    return str.replace(/[a-z]/gi, char => {
-        return prefix.concat(char, suffix);
-    });
+	return str;
 }
 
 var send = XMLHttpRequest.prototype.send;
